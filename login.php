@@ -1,7 +1,5 @@
 <?php
-session_start();
 include 'conexion.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_usuario = $_POST['nombre_usuario'];
     $contraseña = $_POST['contraseña'];
