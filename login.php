@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'conexion.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre_usuario = $_POST['nombre_usuario'];
@@ -28,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['Apellidos'] = $fila['Apellidos']; 
             $_SESSION['Correo'] = $fila['Correo']; 
             
-            header("Location: http://localhost/IziFinanzas/inicio.php");
+            header("Location: inicio.php");
             exit();
         } else {
             // Contraseña incorrecta
