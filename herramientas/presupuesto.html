@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora 50/30/20</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .calculadora {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .distribution-sliders {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .resultado-categoria {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+        }
+        .categoria-necesidades {
+            background-color: #4e73df;
+            border-left: 5px solid #2e59d9;
+        }
+        .categoria-deseos {
+            background-color: #1cc88a;
+            border-left: 5px solid #17a673;
+        }
+        .categoria-ahorro {
+            background-color: #36b9cc;
+            border-left: 5px solid #2c9faf;
+        }
+        .form-range::-webkit-slider-thumb {
+            background: #2e59d9;
+        }
+        .total-presupuesto {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2e59d9;
+        }
+        .suggestions {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="calculadora">
+                    <h3 class="text-center mb-4"><i class="bi bi-pie-chart"></i> Calculadora de Presupuesto 50/30/20</h3>
+                    
+                    <div class="form-group mb-4">
+                        <label class="form-label">Ingreso mensual después de impuestos ($)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" id="ingreso" class="form-control" value="3000" min="0">
+                        </div>
+                    </div>
+
+                    <div class="distribution-sliders">
+                        <h5 class="mb-4">Distribución de tu presupuesto</h5>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <label for="necesidades">Necesidades <span id="necesidades-value">50</span>%</label>
+                                <span id="necesidades-monto">$1,500.00</span>
+                            </div>
+                            <input type="range" class="form-range" min="30" max="70" value="50" id="necesidades">
+                            <small class="text-muted">Vivienda, alimentación, servicios básicos, transporte esencial</small>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <label for="deseos">Deseos <span id="deseos-value">30</span>%</label>
+                                <span id="deseos-monto">$900.00</span>
+                            </div>
+                            <input type="range" class="form-range" min="10" max="50" value="30" id="deseos">
+                            <small class="text-muted">Entretenimiento, restaurantes, viajes, suscripciones</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-2">
+                                <label for="ahorro">Ahorro/Deudas <span id="ahorro-value">20</span>%</label>
+                                <span id="ahorro-monto">$600.00</span>
+                            </div>
+                            <input type="range" class="form-range" min="5" max="40" value="20" id="ahorro">
+                            <small class="text-muted">Ahorro, inversiones, pago de deudas, fondo de emergencia</small>
+                        </div>
+                        
+                        <div class="alert alert-warning mt-3 mb-0" id="balance-alert" style="display: none;">
+                            <i class="bi bi-exclamation-triangle"></i> La suma de porcentajes no es 100%. Ajusta los valores.
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="chart-container" style="position: relative; height:250px;">
+                                <canvas id="grafico-dona"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="mb-3">Tu presupuesto mensual</h5>
+                            <div class="resultado-categoria categoria-necesidades">
+                                <div class="d-flex justify-content-between">
+                                    <span>Necesidades</span>
+                                    <span id="resultado-necesidades">$1,500.00</span>
+                                </div>
+                            </div>
+                            <div class="resultado-categoria categoria-deseos">
+                                <div class="d-flex justify-content-between">
+                                    <span>Deseos</span>
+                                    <span id="resultado-deseos">$900.00</span>
+                                </div>
+                            </div>
+                            <div class="resultado-categoria categoria-ahorro">
+                                <div class="d-flex justify-content-between">
+                                    <span>Ahorro/Deudas</span>
+                                    <span id="resultado-ahorro">$600.00</span>
+                                </div>
+                            </div>
+                            <div class="total-presupuesto text-center mt-3">
+                                Total: <span id="total-presupuesto">$3,000.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="suggestions mt-4" id="suggestions">
+                        <h5><i class="bi bi-lightbulb"></i> Recomendaciones</h5>
+                        <ul id="suggestions-list">
+                            <li>Tu distribución es equilibrada según el método 50/30/20</li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button class="btn btn-outline-secondary" id="reset-btn">
+                            <i class="bi bi-arrow-counterclockwise"></i> Reiniciar
+                        </button>
+                        <button class="btn btn-success" id="save-btn">
+                            <i class="bi bi-download"></i> Guardar PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del DOM
+            const ingresoInput = document.getElementById('ingreso');
+            const necesidadesSlider = document.getElementById('necesidades');
+            const deseosSlider = document.getElementById('deseos');
+            const ahorroSlider = document.getElementById('ahorro');
+            const chartCtx = document.getElementById('grafico-dona').getContext('2d');
+            
+            // Inicializar gráfico
+            let budgetChart = new Chart(chartCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Necesidades', 'Deseos', 'Ahorro/Deudas'],
+                    datasets: [{
+                        data: [1500, 900, 600],
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + 
+                                           '$' + context.raw.toLocaleString() + 
+                                           ' (' + Math.round(context.parsed * 100 / context.dataset.data.reduce((a, b) => a + b, 0)) + '%)';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+
+            // Función para actualizar todo
+            function updateBudget() {
+                const ingreso = parseFloat(ingresoInput.value) || 0;
+                const necesidadesPorc = parseInt(necesidadesSlider.value);
+                const deseosPorc = parseInt(deseosSlider.value);
+                const ahorroPorc = parseInt(ahorroSlider.value);
+                
+                // Actualizar valores porcentuales
+                document.getElementById('necesidades-value').textContent = necesidadesPorc;
+                document.getElementById('deseos-value').textContent = deseosPorc;
+                document.getElementById('ahorro-value').textContent = ahorroPorc;
+                
+                // Calcular montos
+                const necesidadesMonto = ingreso * necesidadesPorc / 100;
+                const deseosMonto = ingreso * deseosPorc / 100;
+                const ahorroMonto = ingreso * ahorroPorc / 100;
+                const total = necesidadesMonto + deseosMonto + ahorroMonto;
+                
+                // Formatear como moneda
+                const formatter = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 2
+                });
+                
+                // Actualizar montos en sliders
+                document.getElementById('necesidades-monto').textContent = formatter.format(necesidadesMonto);
+                document.getElementById('deseos-monto').textContent = formatter.format(deseosMonto);
+                document.getElementById('ahorro-monto').textContent = formatter.format(ahorroMonto);
+                
+                // Actualizar resultados
+                document.getElementById('resultado-necesidades').textContent = formatter.format(necesidadesMonto);
+                document.getElementById('resultado-deseos').textContent = formatter.format(deseosMonto);
+                document.getElementById('resultado-ahorro').textContent = formatter.format(ahorroMonto);
+                document.getElementById('total-presupuesto').textContent = formatter.format(total);
+                
+                // Actualizar gráfico
+                budgetChart.data.datasets[0].data = [necesidadesMonto, deseosMonto, ahorroMonto];
+                budgetChart.update();
+                
+                // Verificar balance
+                const totalPorc = necesidadesPorc + deseosPorc + ahorroPorc;
+                const alert = document.getElementById('balance-alert');
+                
+                if (Math.abs(totalPorc - 100) > 1) {
+                    alert.style.display = 'block';
+                } else {
+                    alert.style.display = 'none';
+                }
+                
+                // Generar recomendaciones
+                generateSuggestions(necesidadesPorc, deseosPorc, ahorroPorc);
+            }
+            
+            // Generar recomendaciones personalizadas
+            function generateSuggestions(necesidades, deseos, ahorro) {
+                const suggestionsList = document.getElementById('suggestions-list');
+                suggestionsList.innerHTML = '';
+                
+                // Analizar necesidades
+                if (necesidades > 55) {
+                    suggestionsList.innerHTML += `
+                        <li>Estás asignando mucho a necesidades (${necesidades}%). Considera reducir gastos fijos.</li>
+                    `;
+                } else if (necesidades < 45) {
+                    suggestionsList.innerHTML += `
+                        <li>Tienes margen para asignar más a necesidades (solo ${necesidades}%).</li>
+                    `;
+                }
+                
+                // Analizar deseos
+                if (deseos > 35) {
+                    suggestionsList.innerHTML += `
+                        <li>Estás gastando mucho en deseos (${deseos}%). Podrías reducir este porcentaje.</li>
+                    `;
+                } else if (deseos < 25) {
+                    suggestionsList.innerHTML += `
+                        <li>Tienes espacio para darte algunos gustos (solo ${deseos}% en deseos).</li>
+                    `;
+                }
+                
+                // Analizar ahorro
+                if (ahorro > 25) {
+                    suggestionsList.innerHTML += `
+                        <li>¡Excelente! Estás ahorrando/invirtiendo más del 20% (${ahorro}%).</li>
+                    `;
+                } else if (ahorro < 15) {
+                    suggestionsList.innerHTML += `
+                        <li>Intenta aumentar tu ahorro (solo ${ahorro}%). Es clave para tu futuro.</li>
+                    `;
+                }
+                
+                // Mensaje balanceado
+                if (suggestionsList.children.length === 0) {
+                    suggestionsList.innerHTML += `
+                        <li>Tu distribución es equilibrada según el método 50/30/20</li>
+                    `;
+                }
+            }
+            
+            // Event listeners
+            ingresoInput.addEventListener('input', updateBudget);
+            necesidadesSlider.addEventListener('input', updateBudget);
+            deseosSlider.addEventListener('input', updateBudget);
+            ahorroSlider.addEventListener('input', updateBudget);
+            
+            // Botón de reinicio
+            document.getElementById('reset-btn').addEventListener('click', function() {
+                ingresoInput.value = 3000;
+                necesidadesSlider.value = 50;
+                deseosSlider.value = 30;
+                ahorroSlider.value = 20;
+                updateBudget();
+            });
+            
+            // Botón de guardar (simulado)
+            document.getElementById('save-btn').addEventListener('click', function() {
+                alert('Funcionalidad de exportación se implementará posteriormente');
+                // En una implementación real, usarías una librería como jsPDF
+            });
+            
+            // Inicializar
+            updateBudget();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

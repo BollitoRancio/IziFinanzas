@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección de Registro | IziFinanzas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #108b36;
+            --primary-light: #1ec75f;
+            --primary-dark: #0a5a24;
+            --secondary-color: #2c3e50;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --text-color: #2d3436;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4f0f5 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .option-box {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .option-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .option-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-light);
+        }
+
+        .option-box.user::before {
+            background: linear-gradient(90deg, #1ec75f, #108b36);
+        }
+
+        .option-box.provider::before {
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+        }
+
+        .option-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 199, 95, 0.1);
+            border-radius: 50%;
+            color: var(--primary-light);
+            font-size: 40px;
+        }
+
+        .option-box.provider .option-icon {
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+        }
+
+        .option-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .option-box p {
+            font-size: 1rem;
+            color: #636e72;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--white);
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(30, 199, 95, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(30, 199, 95, 0.4);
+        }
+
+        .btn.provider {
+            background: #3498db;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn.provider:hover {
+            background: #2980b9;
+            box-shadow: 0 7px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: #b2bec3;
+            font-weight: 500;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dfe6e9;
+        }
+
+        .divider::before {
+            margin-right: 15px;
+        }
+
+        .divider::after {
+            margin-left: 15px;
+        }
+
+        .login-link {
+            margin-top: 30px;
+            color: var(--secondary-color);
+        }
+
+        .login-link a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .login-link a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .options {
+                gap: 20px;
+            }
+            
+            .option-box {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .option-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 30px;
+            }
+            
+            .option-box h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="img/iz.png" alt="IziFinanzas Logo">
+        </div>
+        <h1>Comienza tu viaje financiero</h1>
+        <p class="subtitle">Selecciona el tipo de cuenta que mejor se adapte a tus necesidades y únete a nuestra comunidad</p>
+        <div class="options">
+            <!-- Opción de Registro como Usuario Aprendiz -->
+            <div class="option-box user">
+                <div class="option-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h2>Usuario Aprendiz</h2>
+                <p>Accede a contenido educativo exclusivo, lecciones interactivas, herramientas financieras y artículos especializados para mejorar tus conocimientos financieros.</p>
+                <a href="http://localhost/IziFinanzas/registro.php" class="btn">Registrarse como Aprendiz</a>
+            </div>
+
+            <!-- Opción de Registro como Proveedor -->
+            <div class="option-box provider">
+                <div class="option-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h2>Proveedor de Contenido</h2>
+                <p>Comparte tu conocimiento financiero creando artículos, lecciones y recursos educativos para nuestra comunidad de aprendices.</p>
+                <a href="registro_prov.php" class="btn provider">Registrarse como Proveedor</a>
+            </div>
+        </div>
+        
+        <div class="divider">¿Ya tienes una cuenta?</div>
+        
+        <p class="login-link">Inicia sesión <a href="login.php">aquí</a></p>
+    </div>
+</body>
+</html>
