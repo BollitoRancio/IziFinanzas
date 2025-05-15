@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$usuario = "root"; 
-$clave = "1234"; 
-$base_de_datos = "IziFinanzas"; 
+$usuario = "u143755789_root"; 
+$clave = "Contraizi1234!"; 
+$base_de_datos = "u143755789_IziFinanzas"; 
 
 $conexion = new mysqli($host, $usuario, $clave, $base_de_datos);
 
