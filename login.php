@@ -10,9 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Buscar el usuario en la base de datos
     $sql = "SELECT u.*, r.Nombre AS Nombre_Rol 
-        FROM usuarios u
-        JOIN roles r ON u.ID_Rol = r.ID_Rol
-        WHERE u.nombre_usuario = ?";
+        FROM Usuarios u
+        JOIN Roles r ON u.ID_Rol = r.ID_Rol
+        WHERE u.Nombre_Usuario = ?
+        ";
 
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("s", $nombre_usuario);
