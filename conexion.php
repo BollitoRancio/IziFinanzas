@@ -10,7 +10,6 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
     $clave = "Contraizi1234!";
     $base_de_datos = "u143755789_IziFinanzas";
 }
-
 $conexion = new mysqli($host, $usuario, $clave, $base_de_datos);
 
 if ($conexion->connect_error) {
