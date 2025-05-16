@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contraseña = password_hash($_POST["contraseña"], PASSWORD_DEFAULT); // Encriptar contraseña
     $ID_Rol = '11111111-1111-1111-1111-111111111111'; // ID del rol "Usuario"
     // Consulta segura con sentencias preparadas
-    $sql = "INSERT INTO usuarios (nombre, apellidos, edad, nombre_usuario, correo, contraseña, ID_Rol) 
+    $sql = "INSERT INTO Usuarios (Nombre, Apellidos, Edad, Nombre_Usuario, Correo, Contraseña, ID_Rol) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conexion->prepare($sql);
     if ($stmt === false) {
