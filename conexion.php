@@ -1,5 +1,5 @@
 <?php
-$host = "localhost";
+$host = "auth-db1957.hstgr.io";
 $usuario = "u143755789_root"; 
 $clave = "Contraizi1234!"; 
 $base_de_datos = "u143755789_IziFinanzas"; 
