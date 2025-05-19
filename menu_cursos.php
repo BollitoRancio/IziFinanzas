@@ -405,7 +405,7 @@ session_start();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a href="../cursos/curso1.php" class="btn btn-success">
+        <a href="/cursos/curso1.php" class="btn btn-success">
           <i class="bi bi-play-circle me-2"></i> Comenzar curso
         </a>
       </div>
