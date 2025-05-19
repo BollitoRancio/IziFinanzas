@@ -307,11 +307,11 @@ session_start();
     <!-- Sidebar -->
     <div class="sidebar">
         <ul class="menu">
-            <li><a href="inicio.php"><i class="bi bi-house-fill icon"></i> Inicio</a></li>
-            <li><a href="menu_cursos.php"><i class="bi bi-journal-text icon"></i> Cursos</a></li>
-            <li><a href="menu_herramientas.php"><i class="bi bi-calculator-fill icon"></i> Herramientas</a></li>
-            <li><a href="articulos.php"><i class="bi bi-paperclip icon"></i> Artículos</a></li>
-            <li><a href="logout.php"><i class="bi bi-box-arrow-left icon"></i> Salir</a></li>
+             <li><a href="../inicio.php"><i class="bi bi-house-fill icon"></i> Inicio</a></li>
+            <li><a href="../menu_cursos.php"><i class="bi bi-journal-text icon"></i> Cursos</a></li>
+            <li><a href="../menu_herramientas.php"><i class="bi bi-calculator-fill icon"></i> Herramientas</a></li>
+            <li><a href="../articulos.php"><i class="bi bi-paperclip icon"></i> Artículos</a></li>
+            <li><a href="../logout.php"><i class="bi bi-box-arrow-left icon"></i> Salir</a></li>
         </ul>
     </div>
 
