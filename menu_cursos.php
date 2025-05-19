@@ -578,7 +578,7 @@ session_start();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a href="http://localhost/IziFinanzas/cursos/curso2.php" class="btn btn-success text-white">
+        <a href="cursos/curso2.php" class="btn btn-success text-white">
           <i class="bi bi-play-circle me-2"></i> Comenzar curso
         </a>
       </div>
@@ -751,7 +751,7 @@ session_start();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a href="http://localhost/IziFinanzas/cursos/curso3.php" class="btn btn-success">
+        <a href="cursos/curso3.php" class="btn btn-success">
           <i class="bi bi-play-circle me-2"></i> Comenzar curso
         </a>
       </div>
@@ -936,7 +936,7 @@ session_start();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a href="http://localhost/IziFinanzas/cursos/curso4.php" class="btn btn-success">
+        <a href="cursos/curso4.php" class="btn btn-success">
           <i class="bi bi-play-circle me-2"></i> Comenzar curso
         </a>
       </div>
@@ -1122,7 +1122,7 @@ session_start();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a href="http://localhost/IziFinanzas/cursos/curso5.php" class="btn btn-success">
+        <a href="cursos/curso5.php" class="btn btn-success">
           <i class="bi bi-play-circle me-2"></i> Comenzar curso
         </a>
       </div>
@@ -1308,7 +1308,7 @@ session_start();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <a href="http://localhost/IziFinanzas/cursos/curso6.php" class="btn btn-success">
+        <a href="cursos/curso6.php" class="btn btn-success">
           <i class="bi bi-play-circle me-2"></i> Comenzar curso</a>
       </div>
     </div>

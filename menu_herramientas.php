@@ -282,7 +282,7 @@ session_start();
                     <div class="tool-content">
                         <h3 class="tool-title">Interés Compuesto</h3>
                         <p class="tool-desc">Calcula cómo crece tu dinero con el tiempo gracias al poder del interés compuesto.</p>
-                        <a href="http://localhost/IziFinanzas/herramientas/calculadora-interes.php" class="btn btn-tool">Usar calculadora</a>
+                        <a href="herramientas/calculadora-interes.php" class="btn btn-tool">Usar calculadora</a>
                     </div>
                 </div>
                 
@@ -294,7 +294,7 @@ session_start();
                     <div class="tool-content">
                         <h3 class="tool-title">Pago de Deudas</h3>
                         <p class="tool-desc">Compara métodos de pago y descubre cuánto puedes ahorrar en intereses.</p>
-                        <a href="http://localhost/IziFinanzas/herramientas/calculadora-deudas.php" class="btn btn-tool">Usar calculadora</a>
+                        <a href="herramientas/calculadora-deudas.php" class="btn btn-tool">Usar calculadora</a>
                     </div>
                 </div>
                 
@@ -306,7 +306,7 @@ session_start();
                     <div class="tool-content">
                         <h3 class="tool-title">Presupuesto 50/30/20</h3>
                         <p class="tool-desc">Distribuye tus ingresos de manera óptima entre necesidades, deseos y ahorro.</p>
-                        <a href="http://localhost/IziFinanzas/herramientas/calculadora-presupuesto.php" class="btn btn-tool">Usar calculadora</a>
+                        <a href="herramientas/calculadora-presupuesto.php" class="btn btn-tool">Usar calculadora</a>
                     </div>
                 </div>
             </div>
@@ -321,7 +321,7 @@ session_start();
                     <div class="tool-content">
                         <h3 class="tool-title">Compra de Vivienda</h3>
                         <p class="tool-desc">Simula diferentes escenarios para comprar tu casa y planea tu hipoteca.</p>
-                        <a href="http://localhost/IziFinanzas/herramientas/simulador-vivienda.php" class="btn btn-tool">Usar simulador</a>
+                        <a href="herramientas/simulador-vivienda.php" class="btn btn-tool">Usar simulador</a>
                     </div>
                 </div>
                 
@@ -333,7 +333,7 @@ session_start();
                     <div class="tool-content">
                         <h3 class="tool-title">Compra de Auto</h3>
                         <p class="tool-desc">Compara financiamiento vs. contado y calcula costos totales de propiedad.</p>
-                        <a href="http://localhost/IziFinanzas/herramientas/simulador-auto.php" class="btn btn-tool">Usar simulador</a>
+                        <a href="herramientas/simulador-auto.php" class="btn btn-tool">Usar simulador</a>
                     </div>
                 </div>
                 
@@ -345,7 +345,7 @@ session_start();
                     <div class="tool-content">
                         <h3 class="tool-title">Retiro y Jubilación</h3>
                         <p class="tool-desc">Proyecta cuánto necesitarás ahorrar para alcanzar tu meta de retiro.</p>
-                        <a href="http://localhost/IziFinanzas/herramientas/simulador-retiro.php" class="btn btn-tool">Usar simulador</a>
+                        <a href="herramientas/simulador-retiro.php" class="btn btn-tool">Usar simulador</a>
                     </div>
                 </div>
             </div>
