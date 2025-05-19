@@ -6,7 +6,7 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
     // En tu computadora local con XAMPP
     $host = "localhost";
     $usuario = "root";
-    $clave = "";
+    $clave = "1234";
     $base_de_datos = "IziFinanzas";
 } else {
     // En el servidor Hostinger
