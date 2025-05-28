@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $certificacion = $ruta_archivo;
         }
     }
-    $sql_usuario = "INSERT INTO usuarios (Nombre, Apellidos, Edad, Nombre_Usuario, Correo, Contraseña, ID_Rol) 
+    $sql_usuario = "INSERT INTO Usuarios (Nombre, Apellidos, Edad, Nombre_Usuario, Correo, Contraseña, ID_Rol) 
                     VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt_usuario = $conexion->prepare($sql_usuario);
     $stmt_usuario->bind_param("ssissss", $nombre, $apellidos, $edad, $nombre_usuario, $correo, $contraseña, $ID_Rol);
