@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt_usuario->execute()) {
         $id_usuario = $stmt_usuario->insert_id; 
-        $sql_proveedor = "INSERT INTO proveedores (ID_Usuario, Biografia, Experiencia, Especialidad, CertificacionArchivo) 
+        $sql_proveedor = "INSERT INTO Proveedores (ID_Usuario, Biografia, Experiencia, Especialidad, CertificacionArchivo) 
                           VALUES (?, ?, ?, ?, ?)";
         $stmt_prov = $conexion->prepare($sql_proveedor);
         $stmt_prov->bind_param("issss", $id_usuario, $biografia, $experiencia, $especialidad, $certificacion);
